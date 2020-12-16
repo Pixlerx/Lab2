@@ -33,11 +33,35 @@ public class Main extends JFrame
     private Double mem3 = 0.0;
     public Double calculate1(Double x, Double y, Double z)
     {
-
+        if (x == 0)
+        {
+            JOptionPane.showMessageDialog(Main.this, "X не может равняться нулю", "" + "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+        if (x < 0)
+        {
+            JOptionPane.showMessageDialog(Main.this, "X должен быть больше нуля!", "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+        }
+        if (y == -1)
+        {
+            JOptionPane.showMessageDialog(Main.this, "Y не может равняться минус единице", "" + "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+        return Math.pow(Math.cos(Math.exp(x)) + Math.log(Math.pow(1+y, 2)) + Math.pow(Math.exp(Math.cos(x)) + Math.sin(Math.PI * z), 1/2) + Math.pow(1/x, 1/2) + Math.cos(y * y), Math.sin(z));
     }
     public Double calculate2(Double x, Double y, Double z)
     {
-        
+        if (z * x < 0)
+        {
+            JOptionPane.showMessageDialog(Main.this, "Произведение Z * X должно быть больше нуля!", "" + "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+        if (y % 2 == 0 && x <= -1)
+        {
+            JOptionPane.showMessageDialog(Main.this, "X должен быть больше минус единицы!", "" + "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+        return (1 + Math.pow(z * x, 1/2)) / Math.pow(1 + x * x * x, 1/y);
     }
     // Вспомогательный метод для добавления кнопок на панель
     private void addRadioButton(String buttonName, final int formulaId)
